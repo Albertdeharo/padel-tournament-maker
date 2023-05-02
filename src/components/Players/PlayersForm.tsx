@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addPlayer, editPlayer } from '../features/players/playersSlice';
+import { addPlayer, editPlayer } from './playersSlice';
 import { v4 as uuid } from 'uuid';
 import { useNavigate, useParams } from 'react-router-dom'
 

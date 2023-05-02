@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import './App.css'
-import PlayersForm from './components/PlayersForm'
-import PlayersList from './components/PlayersList'
+import './App.scss'
+import PlayersForm from '../components/Players/PlayersForm'
+import PlayersList from '../components/Players/PlayersList'
 
 function App() {
   return (
