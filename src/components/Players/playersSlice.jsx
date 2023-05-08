@@ -7,6 +7,11 @@ const initialState = [
         playerCategory: "C"
     },
     {
+        id: "5",
+        playerName: "Zakkka",
+        playerCategory: "C+"
+    },
+    {
         id: "2",
         playerName: "Alba",
         playerCategory: "B"
@@ -15,6 +20,11 @@ const initialState = [
         id: "3",
         playerName: "Pampli",
         playerCategory: "A"
+    },
+    {
+        id: "4",
+        playerName: "Nacho",
+        playerCategory: "C-"
     }
 ]
 
