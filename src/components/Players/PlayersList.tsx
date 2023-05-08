@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux';
 import { deletePlayer } from './playersSlice';
 import { Link } from 'react-router-dom'
+import * as XLSX from "xlsx";
 
 import './Players.scss'
-
 
 function PlayersList() {
     const dispatch = useDispatch();
@@ -15,6 +15,12 @@ function PlayersList() {
     console.log(Players, 'Players state')
     
 
+    const [excelData, setExcelData] = useState([]);
+
+
+
+
+
   useEffect(() => {
     const NewPlayersSorted = [...Players].sort((a, b) => {
       return a.playerName > b.playerName ? 1 : -1
@@ -23,12 +29,54 @@ function PlayersList() {
     setPlayersSorted(NewPlayersSorted)
   }, [Players]);
     
-    const handleDelete = (id) => {
-        dispatch(deletePlayer(id));
-      };
+  const handleDelete = (id) => {
+      dispatch(deletePlayer(id));
+    };
+
+  const handleFileUpload = (e) => {
+    const reader = new FileReader();
+    reader.readAsBinaryString(e.target.files[0])
+    reader.onload = (e) => {
+      const data = e.target.result;
+      const workbook = XLSX.read(data, { type: "binary" });
+      const sheetName = workbook.SheetNames[0]
+      const sheet = workbook.Sheets[sheetName]
+      const parsedData = XLSX.utils.sheet_to_json(sheet);
+      setExcelData(parsedData)
+    }
+  };
+
 
   return (
     <div className="players_list-container">
+      <input
+      type="file"
+      accept='.xlsx, .xls'
+      onChange={handleFileUpload}
+      />
+      <div>
+        {excelData.length > 0 && (
+          <table>
+            <thead>
+              <tr>
+                {Object.keys(excelData[0]).map((key) => (
+                  <th key={key}>{key}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+                {excelData.map((row, index) => (
+
+                  <tr key={index}>
+                    {Object.values(row).map((value, index) => (
+                      <td key={index}>{value}</td>
+                    ))}
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        )}
+      </div>
       <h1 className="players_list-title">Jugadores {PlayersSorted.length}</h1>
       <Link to="añadir-jugador">Añadir Jugador</Link>
 {/*       {PlayersSorted.map((player) => (
