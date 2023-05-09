@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux';
 import { deletePlayer } from './playersSlice';
+import { updatePlayersList } from './playersSlice';
 import { Link } from 'react-router-dom'
 import * as XLSX from "xlsx";
 
@@ -10,25 +11,15 @@ import './Players.scss'
 function PlayersList() {
     const dispatch = useDispatch();
     const Players = useSelector(state => state.players)
-    const [PlayersSorted, setPlayersSorted] = useState(Players);
-    console.log(PlayersSorted, 'PlayersSorted state')
-    console.log(Players, 'Players state')
-    
-
     const [excelData, setExcelData] = useState([]);
 
-
-
-
-
   useEffect(() => {
-    const NewPlayersSorted = [...Players].sort((a, b) => {
+/*     const NewPlayersSorted = [...Players].sort((a, b) => {
       return a.playerName > b.playerName ? 1 : -1
-    })
+    }) */
 
-    setPlayersSorted(NewPlayersSorted)
-  }, [Players]);
-    
+  }, []);
+
   const handleDelete = (id) => {
       dispatch(deletePlayer(id));
     };
@@ -42,10 +33,20 @@ function PlayersList() {
       const sheetName = workbook.SheetNames[0]
       const sheet = workbook.Sheets[sheetName]
       const parsedData = XLSX.utils.sheet_to_json(sheet);
-      setExcelData(parsedData)
+      /* setExcelData(parsedData) */
+      parsedData.map(obj => {
+        const idsToString = obj.id.toString()
+        const names = obj.playerName
+        const categories = obj.category
+        const allDataFormated = {}
+        allDataFormated.playerName = names
+        allDataFormated.playerCategory = categories
+        allDataFormated.id = idsToString
+        dispatch(updatePlayersList(allDataFormated))
+        return obj
+      })
     }
   };
-
 
   return (
     <div className="players_list-container">
@@ -55,71 +56,41 @@ function PlayersList() {
       onChange={handleFileUpload}
       />
       <div>
-        {excelData.length > 0 && (
-          <table>
-            <thead>
-              <tr>
-                {Object.keys(excelData[0]).map((key) => (
-                  <th key={key}>{key}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-                {excelData.map((row, index) => (
-
-                  <tr key={index}>
-                    {Object.values(row).map((value, index) => (
-                      <td key={index}>{value}</td>
-                    ))}
-                  </tr>
-                ))}
-            </tbody>
-          </table>
-        )}
       </div>
-      <h1 className="players_list-title">Jugadores {PlayersSorted.length}</h1>
+      <h1 className="players_list-title">Jugadores {Players.length}</h1>
       <Link to="añadir-jugador">Añadir Jugador</Link>
-{/*       {PlayersSorted.map((player) => (
-        <div className="" key={player.id}>
-              <h3 className="">{player.playerName}</h3>
-              <h3 className="">{player.playerCategory}</h3>
-              <p className="">{player.id}</p>
-              <button onClick={() => handleDelete(player.id)}>DELETE</button>
-              <Link to={`/editar-jugador/${player.id}`}>Editar</Link>
-        </div>
-      ))} */}
-
-      <table>
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Categoria</th>
-            <th>Id</th>
-          </tr>
-        </thead>
-        <tbody>
-        {PlayersSorted.map((player) => (
-            <tr key={player.id}>
-              <td className="">
-                {player.playerName}
-              </td>
-              <td className="">
-                {player.playerCategory}
-              </td>
-              <td className="">
-                {player.id}
-              </td>
-              <td className="">
-                <Link to={`/editar-jugador/${player.id}`}>Editar</Link>
-              </td>
-              <td className="">
-                <button onClick={() => handleDelete(player.id)}>DELETE</button>
-              </td>
+      {Players.length > 0 && (
+        <table>
+          <thead>
+            <tr>
+              <th key={'nombre'}>Nombre</th>
+              <th key={'categoria'}>Categoria</th>
+              <th key={'id'}>Id</th>
             </tr>
-        ))}
-        </tbody>
-
-      </table>
+          </thead>
+          <tbody>
+          {Players.map((player, key) => (
+              <tr key={key}>
+                <td key={key+'name'} className="">
+                  {player.playerName}
+                </td>
+                <td key={key+'categori'} className="">
+                  {player.playerCategory}
+                </td>
+                <td key={key+'id'} className="">
+                  {player.id}
+                </td>
+                <td key={key+'edit'} className="">
+                  <Link  key={key+'link'} to={`/editar-jugador/${player.id}`}>Editar</Link>
+                </td>
+                <td key={key+'delete'} className="">
+                  <button  key={key+'btn'} onClick={() => handleDelete(player.id)}>DELETE</button>
+                </td>
+              </tr>
+          ))}
+          </tbody>
+        </table>
+      )}
     </div>
   )
 }

@@ -2,29 +2,14 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = [
     {
-        id: "1",
         playerName: "Albert",
-        playerCategory: "C"
+        playerCategory: "C",
+        id: "1",
     },
     {
-        id: "5",
-        playerName: "Zakkka",
-        playerCategory: "C+"
-    },
-    {
-        id: "2",
         playerName: "Alba",
-        playerCategory: "B"
-    },
-    {
-        id: "3",
-        playerName: "Pampli",
-        playerCategory: "A"
-    },
-    {
-        id: "4",
-        playerName: "Nacho",
-        playerCategory: "C-"
+        playerCategory: "C+",
+        id: "5",
     }
 ]
 
@@ -39,7 +24,6 @@ export const playersSlice = createSlice({
         const { id, playerName, playerCategory } = action.payload;
         const foundPlayer = state.find((player) => player.id === id);
         if (foundPlayer) {
-            console.log(foundPlayer.playerName)
             foundPlayer.playerName = playerName;
             foundPlayer.playerCategory = playerCategory;
         }
@@ -50,9 +34,14 @@ export const playersSlice = createSlice({
           state.splice(state.indexOf(foundPlayer), 1);
         }
     },
+    updatePlayersList: (state, action) => {
+      // clean state
+      /* state.splice(0,state.length) */
+      state.push(action.payload)
+    },
   },
 })
 
-export const { addPlayer, deletePlayer, editPlayer } = playersSlice.actions
+export const { addPlayer, deletePlayer, editPlayer, updatePlayersList } = playersSlice.actions
 
 export default playersSlice.reducer

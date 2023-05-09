@@ -48,7 +48,7 @@ function PlayersForm() {
             setPlayer(Players.find((player) => player.id === params.id));
         }
       }, [params, Players]);
-
+      
   return (
     <form onSubmit={handleSubmit}>
       <input type="text" name="playerName" value={player.playerName} placeholder='nombre' onChange={handleChange} />
