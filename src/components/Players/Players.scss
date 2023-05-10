@@ -1,7 +1,37 @@
 .players_list{
     &-container{
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        padding-bottom: 1rem;
     }
     &-title{
         color: #f4eae4;
     }
 }
+
+#players-table {
+    padding: 1em;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.8px);
+    -webkit-backdrop-filter: blur(5.8px);
+    border: 1px solid rgba(255, 255, 255, 0.31);
+  }
+
+  
+  /* #players-table tr:nth-child(even){background-color: #f2f2f2;} */
+  
+  #players-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.31);
+    font-weight:bold;
+  }
+  
+/*   #players-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }  */

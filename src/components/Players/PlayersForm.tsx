@@ -4,19 +4,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addPlayer, editPlayer } from './playersSlice';
 import { v4 as uuid } from 'uuid';
 import { useNavigate, useParams } from 'react-router-dom'
+import * as constants from './../../utils/constants';
 
 function PlayersForm() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const params = useParams();
+    const Players = useSelector(state => state.players)
 
     const [player, setPlayer] = useState({
         playerName: "",
         playerCategory: "",
       });
-
-    const Players = useSelector(state => state.players)
-
     
     const handleChange = (e) => {
         setPlayer({
@@ -24,11 +23,9 @@ function PlayersForm() {
           [e.target.name]: e.target.value,
         });
       };
-
         
     const handleSubmit = (e) => {
         e.preventDefault();
-
         if (params.id) {
             dispatch(editPlayer({ ...player, id: params.id }));
           } else {
@@ -48,11 +45,31 @@ function PlayersForm() {
             setPlayer(Players.find((player) => player.id === params.id));
         }
       }, [params, Players]);
-      
+
   return (
     <form onSubmit={handleSubmit}>
       <input type="text" name="playerName" value={player.playerName} placeholder='nombre' onChange={handleChange} />
-      <textarea name="playerCategory" value={player.playerCategory} id="" cols="30" rows="10" onChange={handleChange}></textarea>
+      <label>Select category:</label>
+      <select
+        name="playerCategory"
+        id="playerCategorySelect"
+        onChange={handleChange}
+        defaultValue=""
+        required
+      >
+        {player.playerCategory ? '':<option value="" disabled>Choose category</option>}
+        {constants.allCategories.map((categoryOption, key) => (
+          <option
+            key={key}
+            value={categoryOption}
+            selected={player.playerCategory === categoryOption ? true:false}
+          >
+            {categoryOption}
+          </option>
+          ))}
+      </select>
+      <br />
+      <br />
       <button>save</button>
     </form>
   )

@@ -60,7 +60,7 @@ function PlayersList() {
       <h1 className="players_list-title">Jugadores {Players.length}</h1>
       <Link to="añadir-jugador">Añadir Jugador</Link>
       {Players.length > 0 && (
-        <table>
+        <table id="players-table">
           <thead>
             <tr>
               <th key={'nombre'}>Nombre</th>
