@@ -11,7 +11,6 @@ import './Players.scss'
 function PlayersList() {
     const dispatch = useDispatch();
     const Players = useSelector(state => state.players)
-    const [excelData, setExcelData] = useState([]);
 
   useEffect(() => {
 /*     const NewPlayersSorted = [...Players].sort((a, b) => {
@@ -33,7 +32,6 @@ function PlayersList() {
       const sheetName = workbook.SheetNames[0]
       const sheet = workbook.Sheets[sheetName]
       const parsedData = XLSX.utils.sheet_to_json(sheet);
-      /* setExcelData(parsedData) */
       parsedData.map(obj => {
         const idsToString = obj.id.toString()
         const names = obj.playerName
@@ -48,6 +46,13 @@ function PlayersList() {
     }
   };
 
+  const handleFileDownload = () => {
+    const worksheet = XLSX.utils.json_to_sheet(Players);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Dates");
+    XLSX.writeFile(workbook, "Players.xlsx", { compression: true });
+  };
+
   return (
     <div className="players_list-container">
       <input
@@ -55,6 +60,7 @@ function PlayersList() {
       accept='.xlsx, .xls'
       onChange={handleFileUpload}
       />
+      <button onClick={handleFileDownload}>Export</button>
       <div>
       </div>
       <h1 className="players_list-title">Jugadores {Players.length}</h1>
