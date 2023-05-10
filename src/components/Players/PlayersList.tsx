@@ -49,8 +49,11 @@ function PlayersList() {
   const handleFileDownload = () => {
     const worksheet = XLSX.utils.json_to_sheet(Players);
     const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Dates");
-    XLSX.writeFile(workbook, "Players.xlsx", { compression: true });
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Players");
+    XLSX.utils.sheet_add_aoa(worksheet,[
+      ["Nombre Jugador", "Categoria", "Id"],
+    ]);
+    XLSX.writeFile(workbook, "ListaJugadores.xlsx", { compression: true });
   };
 
   return (
