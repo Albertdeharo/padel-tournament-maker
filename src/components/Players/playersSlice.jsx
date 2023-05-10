@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = [
-    {
+/*     {
         playerName: "Albert",
         playerCategory: "C",
         id: "1",
@@ -10,7 +10,7 @@ const initialState = [
         playerName: "Alba",
         playerCategory: "C+",
         id: "5",
-    }
+    } */
 ]
 
 export const playersSlice = createSlice({

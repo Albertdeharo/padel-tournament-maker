@@ -6,3 +6,4 @@ export const store = configureStore({
       players: playersReducer
   },
 })
+export default store
