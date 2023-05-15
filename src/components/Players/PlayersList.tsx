@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux'
 import { deletePlayer } from './playersSlice';
 import { updatePlayersList } from './playersSlice';
 import { Link } from 'react-router-dom'
 import * as XLSX from "xlsx";
 import store from './../../app/store'
+import Navbar from '../Navbar/Navbar'
 
 import LoadingSpinner from "./../Spinner/Spinner";
 import './Players.scss'
@@ -69,6 +69,8 @@ function PlayersList() {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="players_list-container">
         <div className="file-input">
           <input
@@ -153,6 +155,7 @@ function PlayersList() {
       )}
       {isLoading123 ? <LoadingSpinner /> : ''}
     </div>
+    </>
   )
 }
 
