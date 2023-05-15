@@ -11,7 +11,6 @@ function PlayersForm() {
     const navigate = useNavigate();
     const params = useParams();
     const Players = useSelector(state => state.players)
-
     const [player, setPlayer] = useState({
         playerName: "",
         playerCategory: "",

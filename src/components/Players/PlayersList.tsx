@@ -13,7 +13,7 @@ import './Players.scss'
 function PlayersList() {
   const dispatch = useDispatch();
   const Players = useSelector(state => state.players)
-  console.log(store.getState().players)
+  /* console.log(store.getState().players) */
   const [isLoading123, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -42,13 +42,14 @@ function PlayersList() {
       const sheet = workbook.Sheets[sheetName]
       const parsedData = XLSX.utils.sheet_to_json(sheet);
       parsedData.map(obj => {
-        const idsToString = obj.id
+        const idsToString = obj.id.toString()
         const names = obj.playerName
         const categories = obj.playerCategory
         const allDataFormated = {}
         allDataFormated.playerName = names
         allDataFormated.playerCategory = categories
         allDataFormated.id = idsToString
+        console.log(allDataFormated,'ALL FORMATED')
         dispatch(updatePlayersList(allDataFormated))
         return obj
       })
@@ -67,7 +68,7 @@ function PlayersList() {
     ]); */
     XLSX.writeFile(workbook, "ListaJugadores.xlsx", { compression: true });
   };
-  console.log(Players,'PLAYERS')
+
   return (
     <div className="players_list-container">
         <div className="file-input">
@@ -113,12 +114,12 @@ function PlayersList() {
       <div>
       </div>
       <h1 className="players_list-title">Jugadores {Players.length}</h1>
-      <a
-      href='/añadir-jugador'
+      <Link
+      to='/añadir-jugador'
       className="button-85"
       role="button">
       Añadir Jugador
-      </a>
+      </Link>
       {Players.length > 0 && (
         <table id="players-table">
           <thead>
