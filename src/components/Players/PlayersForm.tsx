@@ -36,7 +36,7 @@ function PlayersForm() {
             );
           }
       
-        navigate('/')
+        navigate('/home')
     };
 
     useEffect(() => {

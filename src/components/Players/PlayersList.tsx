@@ -49,7 +49,6 @@ function PlayersList() {
         allDataFormated.playerName = names
         allDataFormated.playerCategory = categories
         allDataFormated.id = idsToString
-        console.log(allDataFormated,'ALL FORMATED')
         dispatch(updatePlayersList(allDataFormated))
         return obj
       })
