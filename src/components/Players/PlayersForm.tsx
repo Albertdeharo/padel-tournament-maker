@@ -14,6 +14,7 @@ function PlayersForm() {
     const [player, setPlayer] = useState({
         playerName: "",
         playerCategory: "",
+        playerGender: "",
       });
     
     const handleChange = (e) => {
@@ -67,6 +68,26 @@ function PlayersForm() {
           </option>
           ))}
       </select>
+
+      <select
+        name="playerGender"
+        id="playerGenderSelect"
+        onChange={handleChange}
+        defaultValue=""
+        required
+      >
+        {player.playerGender ? '':<option value="" disabled>Choose gender</option>}
+        {constants.Gender.map((genderOption, key) => (
+          <option
+            key={key}
+            value={genderOption}
+            selected={player.playerGender === genderOption ? true:false}
+          >
+            {genderOption}
+          </option>
+          ))}
+      </select>
+
       <br />
       <br />
       <button>save</button>

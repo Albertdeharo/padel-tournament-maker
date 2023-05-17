@@ -13,6 +13,7 @@ import './Players.scss'
 function PlayersList() {
   const dispatch = useDispatch();
   const Players = useSelector(state => state.players)
+  console.log(Players)
   /* console.log(store.getState().players) */
   const [isLoading123, setIsLoading] = useState(false);
 
@@ -45,9 +46,11 @@ function PlayersList() {
         const idsToString = obj.id.toString()
         const names = obj.playerName
         const categories = obj.playerCategory
+        const gender = obj.playerGender
         const allDataFormated = {}
         allDataFormated.playerName = names
         allDataFormated.playerCategory = categories
+        allDataFormated.playerGender = gender
         allDataFormated.id = idsToString
         dispatch(updatePlayersList(allDataFormated))
         return obj
@@ -125,9 +128,9 @@ function PlayersList() {
         <table id="players-table">
           <thead>
             <tr>
-              <th key={'nombre'}>Nombre</th>
-              <th key={'categoria'}>Categoria</th>
-              <th key={'id'}>Id</th>
+              <th key={'nombre'}>Name</th>
+              <th key={'categoria'}>Category</th>
+              <th key={'id'}>Gender</th>
             </tr>
           </thead>
           <tbody>
@@ -140,7 +143,7 @@ function PlayersList() {
                   {player.playerCategory}
                 </td>
                 <td key={key+'id'} className="">
-                  {player.id}
+                  {player.playerGender}
                 </td>
                 <td key={key+'edit'} className="">
                   <Link  key={key+'link'} to={`/editar-jugador/${player.id}`}>Editar</Link>

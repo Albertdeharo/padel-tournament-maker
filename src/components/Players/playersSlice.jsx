@@ -21,11 +21,12 @@ export const playersSlice = createSlice({
       state.push(action.payload)
     },
     editPlayer: (state, action) => {
-        const { id, playerName, playerCategory } = action.payload;
+        const { id, playerName, playerCategory, playerGender } = action.payload;
         const foundPlayer = state.find((player) => player.id === id);
         if (foundPlayer) {
             foundPlayer.playerName = playerName;
             foundPlayer.playerCategory = playerCategory;
+            foundPlayer.playerGender = playerGender;
         }
       },
     deletePlayer: (state, action) => {

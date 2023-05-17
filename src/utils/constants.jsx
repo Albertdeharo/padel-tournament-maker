@@ -3,3 +3,9 @@ export const allCategories = [
     'B',
     'C'
 ]
+
+export const Gender = [
+    'Male',
+    'Female',
+]
+
