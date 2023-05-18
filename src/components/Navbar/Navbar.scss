@@ -1,8 +1,9 @@
 .custom-nav {
   height: 50px;
   width: 100%;
-  background-color: #4d4d4d;
-  position: relative;
+  background-color: #000;
+  position: absolute;
+  left: 0;
   & .nav-header {
     display: inline;
   }
@@ -31,6 +32,11 @@
   }
   & #nav-check {
     display: none;
+/*     position: absolute;
+    right: 0;
+    height: 50px;
+    width: 50px;
+    z-index: 99; */
   }
 }
 

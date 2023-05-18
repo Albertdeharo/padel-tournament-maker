@@ -6,14 +6,14 @@ import { Link } from 'react-router-dom'
 import * as XLSX from "xlsx";
 import store from './../../app/store'
 import Navbar from '../Navbar/Navbar'
+import Sidebar from '../Sidebar/Sidebar'
 
 import LoadingSpinner from "./../Spinner/Spinner";
-import './Players.scss'
+import './PlayersList.scss'
 
 function PlayersList() {
   const dispatch = useDispatch();
   const Players = useSelector(state => state.players)
-  console.log(Players)
   /* console.log(store.getState().players) */
   const [isLoading123, setIsLoading] = useState(false);
 
@@ -74,6 +74,7 @@ function PlayersList() {
   return (
     <>
     <Navbar/>
+    <Sidebar/>
     <div className="players_list-container">
         <div className="file-input">
           <input

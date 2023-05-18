@@ -12,6 +12,7 @@ import {
 import { Doughnut, Bar } from 'react-chartjs-2';
 import { useSelector } from 'react-redux'
 import Navbar from '../Navbar/Navbar'
+import Sidebar from '../Sidebar/Sidebar'
 import "./Home.scss";
 
 ChartJS.register(
@@ -115,12 +116,12 @@ export default function Home() {
     setPlayersCategoryC(FilterPlayersCategoryC)
     setPlayersGenderMale(FilterPlayersGenderMale)
     setPlayersGenderFemale(FilterPlayersGenderFemale)
-    console.log(FilterPlayersGenderMale, FilterPlayersGenderFemale)
   }, [Players]);
 
   return (
     <>
       <Navbar/>
+      <Sidebar/>
       <div className="doughnut-container">
         {Players.length != 0 ?
           <>
