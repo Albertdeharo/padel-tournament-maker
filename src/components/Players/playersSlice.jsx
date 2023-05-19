@@ -1,17 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = [
-/*     {
-        playerName: "Albert",
-        playerCategory: "C",
-        id: "1",
-    },
-    {
-        playerName: "Alba",
-        playerCategory: "C+",
-        id: "5",
-    } */
-]
+const initialState = []
 
 export const playersSlice = createSlice({
   name: 'players',
@@ -21,10 +10,11 @@ export const playersSlice = createSlice({
       state.push(action.payload)
     },
     editPlayer: (state, action) => {
-        const { id, playerName, playerCategory, playerGender } = action.payload;
+        const { id, firstPlayerName, secondPlayerName, playerCategory, playerGender } = action.payload;
         const foundPlayer = state.find((player) => player.id === id);
         if (foundPlayer) {
-            foundPlayer.playerName = playerName;
+            foundPlayer.firstPlayerName = firstPlayerName;
+            foundPlayer.secondPlayerName = secondPlayerName;
             foundPlayer.playerCategory = playerCategory;
             foundPlayer.playerGender = playerGender;
         }

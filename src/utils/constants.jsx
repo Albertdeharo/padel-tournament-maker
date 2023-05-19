@@ -7,5 +7,6 @@ export const allCategories = [
 export const Gender = [
     'Male',
     'Female',
+    'Mixed'
 ]
 

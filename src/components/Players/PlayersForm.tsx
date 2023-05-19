@@ -15,7 +15,8 @@ function PlayersForm() {
     const params = useParams();
     const Players = useSelector(state => state.players)
     const [player, setPlayer] = useState({
-        playerName: "",
+        firstPlayerName: "",
+        secondPlayerName: "",
         playerCategory: "",
         playerGender: "",
       });
@@ -55,7 +56,16 @@ function PlayersForm() {
       <Sidebar/>
       <div className="players-form__container">
         <form onSubmit={handleSubmit}>
-          <input type="text" name="playerName" value={player.playerName} placeholder='nombre' onChange={handleChange} />
+          <div className="row m-0 p-0">
+            <div className="col-6">
+              <label>First Player Name:</label>
+              <input type="text" name="firstPlayerName" value={player.firstPlayerName} placeholder='nombre' onChange={handleChange} />
+            </div>
+            <div className="col-6">
+              <label>Second Player Name:</label>
+              <input type="text" name="secondPlayerName" value={player.secondPlayerName} placeholder='nombre' onChange={handleChange} />
+            </div>
+          </div>
           <label>Select category:</label>
           <select
             name="playerCategory"
@@ -75,7 +85,7 @@ function PlayersForm() {
               </option>
               ))}
           </select>
-
+          <label>Select gender:</label>
           <select
             name="playerGender"
             id="playerGenderSelect"

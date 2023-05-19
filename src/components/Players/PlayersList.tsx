@@ -44,11 +44,13 @@ function PlayersList() {
       const parsedData = XLSX.utils.sheet_to_json(sheet);
       parsedData.map(obj => {
         const idsToString = obj.id.toString()
-        const names = obj.playerName
+        const firstPlayername = obj.firstPlayerName
+        const secondPlayername = obj.secondPlayerName
         const categories = obj.playerCategory
         const gender = obj.playerGender
         const allDataFormated = {}
-        allDataFormated.playerName = names
+        allDataFormated.firstPlayerName = firstPlayername
+        allDataFormated.secondPlayerName = secondPlayername
         allDataFormated.playerCategory = categories
         allDataFormated.playerGender = gender
         allDataFormated.id = idsToString
@@ -129,18 +131,22 @@ function PlayersList() {
         <table id="players-table">
           <thead>
             <tr>
-              <th key={'nombre'}>Name</th>
-              <th key={'categoria'}>Category</th>
+              <th key={'firstName'}>First Player Name</th>
+              <th key={'SecondName'}>Second Player Name</th>
+              <th key={'category'}>Category</th>
               <th key={'id'}>Gender</th>
             </tr>
           </thead>
           <tbody>
           {Players.map((player, key) => (
               <tr key={key}>
-                <td key={key+'name'} className="">
-                  {player.playerName}
+                <td key={key+'firstname'} className="">
+                  {player.firstPlayerName}
                 </td>
-                <td key={key+'categori'} className="">
+                <td key={key+'secondname'} className="">
+                  {player.secondPlayerName}
+                </td>
+                <td key={key+'category'} className="">
                   {player.playerCategory}
                 </td>
                 <td key={key+'id'} className="">
