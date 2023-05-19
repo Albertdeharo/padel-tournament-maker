@@ -27,9 +27,9 @@ function Sidebar() {
         { id: 'FemeninoC', text: ""},
       ];
     const sideBarItemsMixed = [
-        { id: 'MixedA', text: ""},
-        { id: 'MixedB', text: ""},
-        { id: 'MixedC', text: ""},
+        { id: 'MixtoA', text: ""},
+        { id: 'MixtoB', text: ""},
+        { id: 'MixtoC', text: ""},
       ];
 
     const getItemIcon = (id) => {
@@ -65,6 +65,18 @@ function Sidebar() {
                 return 'jugadores/masculino/B'
             case 'MasculinoC':
                 return 'jugadores/masculino/C'
+            case 'FemeninoA':
+                return 'jugadores/femenino/A'
+            case 'FemeninoB':
+                return 'jugadores/femenino/B'
+            case 'FemeninoC':
+                return 'jugadores/femenino/C'
+            case 'MixtoA':
+                return 'jugadores/mixto/A'
+            case 'MixtoB':
+                return 'jugadores/mixto/B'
+            case 'MixtoC':
+                return 'jugadores/mixto/C'
             default:
                 return ''
         }
@@ -77,17 +89,47 @@ function Sidebar() {
         } else {
             document.getElementById("MasculinoA")?.classList.remove('active')
         }
-
         if (path === '/jugadores/masculino/B') {
             document.getElementById("MasculinoB")?.classList.add('active')
         } else {
             document.getElementById("MasculinoB")?.classList.remove('active')
         }
-
         if (path === '/jugadores/masculino/C') {
             document.getElementById("MasculinoC")?.classList.add('active')
         } else {
             document.getElementById("MasculinoC")?.classList.remove('active')
+        }
+
+        if (path === '/jugadores/femenino/A') {
+            document.getElementById("FemeninoA")?.classList.add('active')
+        } else {
+            document.getElementById("FemeninoA")?.classList.remove('active')
+        }
+        if (path === '/jugadores/femenino/B') {
+            document.getElementById("FemeninoB")?.classList.add('active')
+        } else {
+            document.getElementById("FemeninoB")?.classList.remove('active')
+        }
+        if (path === '/jugadores/femenino/C') {
+            document.getElementById("FemeninoC")?.classList.add('active')
+        } else {
+            document.getElementById("FemeninoC")?.classList.remove('active')
+        }
+
+        if (path === '/jugadores/mixto/A') {
+            document.getElementById("MixtoA")?.classList.add('active')
+        } else {
+            document.getElementById("MixtoA")?.classList.remove('active')
+        }
+        if (path === '/jugadores/mixto/B') {
+            document.getElementById("MixtoB")?.classList.add('active')
+        } else {
+            document.getElementById("MixtoB")?.classList.remove('active')
+        }
+        if (path === '/jugadores/mixto/C') {
+            document.getElementById("MixtoC")?.classList.add('active')
+        } else {
+            document.getElementById("MixtoC")?.classList.remove('active')
         }
         
           }, [path]);
@@ -95,8 +137,10 @@ function Sidebar() {
   return (
     <>
     <div className="custom-sidebar">
-        <ul id='sidebar-ul'>
+        <nav id='sidebar-nav'>
             {/* <li key={val.id} onClick={() => setActiveItem(val.id)} className={`list ${activeItem === val.id ? "active" : ""}`}> */}
+            
+            <span className='sidebar-item__title'>Mens</span>
             {sideBarItemsMale.map((val) => (
             <li key={val.id} id={val.id}>
                 <b></b>
@@ -108,6 +152,9 @@ function Sidebar() {
                 </Link>
             </li>
             ))}
+
+
+            <span className='sidebar-item__title'>Womens</span>
             {sideBarItemsFemale.map((val) => (
             <li key={val.id} id={val.id}>
                 <b></b>
@@ -119,7 +166,10 @@ function Sidebar() {
                 </Link>
             </li>
             ))}
-            {sideBarItemsFemale.map((val) => (
+
+
+            <span className='sidebar-item__title'>Mixed</span>
+            {sideBarItemsMixed.map((val) => (
             <li key={val.id} id={val.id}>
                 <b></b>
                 <b></b>
@@ -130,7 +180,9 @@ function Sidebar() {
                 </Link>
             </li>
             ))}
-        </ul>
+
+
+        </nav>
     </div>
     </>
   );
