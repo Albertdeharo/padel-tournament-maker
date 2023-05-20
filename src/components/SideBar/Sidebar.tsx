@@ -140,7 +140,7 @@ function Sidebar() {
         <nav id='sidebar-nav'>
             {/* <li key={val.id} onClick={() => setActiveItem(val.id)} className={`list ${activeItem === val.id ? "active" : ""}`}> */}
             
-            <span className='sidebar-item__title'>Mens</span>
+            <span className='sidebar-item__title'>Men</span>
             {sideBarItemsMale.map((val) => (
             <li key={val.id} id={val.id}>
                 <b></b>
@@ -154,7 +154,7 @@ function Sidebar() {
             ))}
 
 
-            <span className='sidebar-item__title'>Womens</span>
+            <span className='sidebar-item__title'>Women</span>
             {sideBarItemsFemale.map((val) => (
             <li key={val.id} id={val.id}>
                 <b></b>

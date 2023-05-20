@@ -41,7 +41,7 @@ function PlayersForm() {
             );
           }
       
-        navigate('/home')
+        navigate(-1)
     };
 
     useEffect(() => {

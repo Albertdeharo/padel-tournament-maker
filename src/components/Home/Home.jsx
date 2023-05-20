@@ -33,7 +33,7 @@ export default function Home() {
   const [PlayersGenderMale, setPlayersGenderMale] = useState([]);
   const [PlayersGenderFemale, setPlayersGenderFemale] = useState([]);
 
-  const DoughnutCategoriesData = {
+  const allCategoriesPlayers = {
     labels: ['Category A', 'Category B', 'Category C'],
     datasets: [
       {
@@ -54,7 +54,7 @@ export default function Home() {
     ],
   };
 
-  const Baroptions = {
+  const allGenderPlayersOptions = {
     responsive: true,
     plugins: {
       legend: {
@@ -67,7 +67,7 @@ export default function Home() {
     },
   };
 
-  const Bardata = {
+  const allGenderPlayers = {
     labels: ['Genders'],
     datasets: [
         {
@@ -122,14 +122,28 @@ export default function Home() {
     <>
       <Navbar/>
       <Sidebar/>
-      <div className="doughnut-container">
+      <div className="home-container">
         {Players.length != 0 ?
           <>
-          <div className="col">
-            <Doughnut data={DoughnutCategoriesData} />
+          <div className="row m-0 allPlayersDoughnut-container">
+            <div className="col-12 allPlayersDoughnut-title">
+              <h2>All players by category</h2>
+            </div>
+            <div className="col-12 d-flex justify-content-center">
+              <div className="allPlayersDoughnut-canvas w-25">
+                <Doughnut data={allCategoriesPlayers} />
+              </div>
+            </div>
           </div>
-          <div className="col">
-            <Bar data={Bardata} options={Baroptions} />
+          <div className="row m-0 allPlayersBar-container">
+            <div className="col-12 allPlayersBar-title">
+              <h2>All players by gender</h2>
+            </div>
+            <div className="col-12 allPlayersBar-canvas d-flex justify-content-center">
+              <div className="w-50">
+                <Bar data={allGenderPlayers} options={allGenderPlayersOptions} />
+              </div>
+            </div>
           </div>
           </>
         :

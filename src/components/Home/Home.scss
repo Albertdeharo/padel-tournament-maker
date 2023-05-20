@@ -1,6 +1,25 @@
-.doughnut-container{
-  display: flex;
+.home-container{
   width: 100%;
-  justify-content: space-around;
   padding-top: 50px;
+
+  & .allPlayersDoughnut{
+    &-container{
+      padding-top: 3rem;
+    }
+    &-title{
+      color: aquamarine;
+    }
+    &-canvas{
+    }
+  }
+
+  & .allPlayersBar{
+    &-container{
+    }
+    &-title{
+      color: aquamarine;
+    }
+    &-canvas{
+    }
+  }
 }

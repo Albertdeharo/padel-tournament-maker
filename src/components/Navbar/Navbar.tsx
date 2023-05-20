@@ -15,7 +15,7 @@ function Navbar() {
         <input type="checkbox" id="nav-check" />
         <div className="nav-header">
             <div className="nav-title">
-                Padel Tournament maker
+                <Link to="/home">Padel Tournament maker</Link>
             </div>
         </div>
         <div className="nav-btn">
@@ -26,12 +26,12 @@ function Navbar() {
             </label>
         </div>
         <div className="nav-links">
-            <Link to="/home">Inicio</Link>
+            {/* <Link to="/home">Inicio</Link> */}
             <Link to='/añadir-jugador'>
-                Añadir Jugador
+                Añadir Pareja
             </Link>
             <Link to="/jugadores">
-                Total Jugadores {Players.length}
+                Total Jugadores {Players.length*2}
             </Link>
         </div>
     </div>

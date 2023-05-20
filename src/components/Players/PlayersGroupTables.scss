@@ -1,0 +1,27 @@
+.players-table-group{
+  background-color: aqua;
+  width: 100%;
+  padding: 2rem;
+  tbody {
+    & tr:nth-child(1){
+      & td:nth-child(2) {
+        background: rgb(17, 0, 255);
+      }
+    }
+    & tr:nth-child(2){
+      & td:nth-child(3) {
+        background: rgb(17, 0, 255);
+      }
+    }
+    & tr:nth-child(3){
+      & td:nth-child(4) {
+        background: rgb(17, 0, 255);
+      }
+    }
+    & tr:nth-child(4){
+      & td:nth-child(5) {
+        background: rgb(17, 0, 255);
+      }
+    }
+  }
+}
