@@ -13,16 +13,13 @@ function MaleA() {
   const dispatch = useDispatch();
   const Players = useSelector(state => state.players)
   const [PlayersCategoryA, setPlayersCategoryA] = useState([]);
-  const [PlayersGroupsCategoryA, setPlayersGroupsCategoryAGroup1] = useState([]);
+  const [PlayersGroupsCategoryA, setPlayersGroupsCategoryA] = useState([]);
 
   useEffect(() => {
     const FilterPlayersCategoryA = Players.filter(player => {
       return player.playerCategory === 'A' && player.playerGender === 'Male'
     })
     setPlayersCategoryA(FilterPlayersCategoryA)
-    console.log(PlayersCategoryA, 'PlayersCategoryA')
-
-
     }, [Players]);
 
     const makeGroups = () => {
@@ -50,13 +47,53 @@ function MaleA() {
 
       // Seteamos los grupos resultantes
       console.log(groups);
-      setPlayersGroupsCategoryAGroup1(groups)
+      setPlayersGroupsCategoryA(groups)
     }
+
+
+    const [PlayersGroupsCategoryASchedule, setPlayersGroupsCategoryASchedule] = useState([TournamentHours]);
+    const [scheduleRandom, setScheduleRandom] = useState([]);
 
     const getSchedule = () => {
+/*       // Genera un índice aleatorio dentro del rango válido
+      const randomIndex = Math.floor(Math.random() * PlayersGroupsCategoryASchedule[0].length);
+      
+      // Elimina y obtiene el valor aleatorio del array
+      const removedValue = PlayersGroupsCategoryASchedule[0].splice(randomIndex, 1)[0];
+      setPlayersGroupsCategoryASchedule(PlayersGroupsCategoryASchedule)
+      console.log('Valor aleatorio eliminado:', removedValue);
+      console.log('Array resultante:', PlayersGroupsCategoryASchedule);
+      return setScheduleRandom(removedValue) */
+
+            // Función para barajar aleatoriamente un array de objetos
+            function shuffleArray(array) {
+              const newArray = [...array];
+              for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+              }
+              return newArray;
+            }
+            // Array original con 16 objetos
+            // PlayersCategoryA
+      
+            // Barajamos aleatoriamente el array de objetos
+            const shuffledArray = shuffleArray(PlayersGroupsCategoryASchedule[0]);
+      
+            // Dividimos el array barajado en grupos de 4 objetos
+            const groups = [];
+            for (let i = 0; i < shuffledArray.length; i += 4) {
+              const group = shuffledArray.slice(i, i + 4);
+              groups.push(group);
+            }
+      
+            // Seteamos los grupos resultantes
+            console.log(groups);
+            setScheduleRandom(groups)
+            console.log(scheduleRandom, 'scheduleRandom')
+
     }
 
-    console.log(PlayersGroupsCategoryA[0], 'PlayersGroupsCategoryA');
 
   return (
     <>
@@ -86,17 +123,24 @@ function MaleA() {
                     {playersMaleAgroup1.firstPlayerName+ ' '}
                     {playersMaleAgroup1.secondPlayerName}
                   </td>
+
+{/*                   {scheduleRandom[0].map((playersMaleAgroup1scheduleRandom, key) => (
+                    <td key={key+'partido2'} className="">
+                      {playersMaleAgroup1scheduleRandom}
+                    </td>
+                  ))} */}
+
                   <td key={key+'partido1'} className="">
-                    horario partido1
+                    {scheduleRandom[0][0]}
                   </td>
                   <td key={key+'partido2'} className="">
-                    horario partido2
+                    {scheduleRandom[0][1]}
                   </td>
                   <td key={key+'partido3'} className="">
-                    horario partido3
+                    {scheduleRandom[0][2]}
                   </td>
                   <td key={key+'partido4'} className="">
-                    horario partido4
+                    {scheduleRandom[0][3]}
                   </td>
                 </tr>
             ))}
