@@ -109,7 +109,7 @@ function MaleA() {
         <br />
         <br />
 
-        {PlayersGroupsCategoryA.length > 0 && (
+        {PlayersGroupsCategoryA.length > 1 && (
           <table className="players-table-group">
             <thead>
               <tr>
@@ -150,7 +150,7 @@ function MaleA() {
         <br />
         <br />
 
-        {PlayersGroupsCategoryA.length > 0 && (
+        {PlayersGroupsCategoryA.length > 2 && (
           <table className="players-table-group">
             <thead>
               <tr>
@@ -191,7 +191,7 @@ function MaleA() {
         <br />
         <br />
 
-        {PlayersGroupsCategoryA.length > 0 && (
+        {PlayersGroupsCategoryA.length > 3 && (
           <table className="players-table-group">
             <thead>
               <tr>
