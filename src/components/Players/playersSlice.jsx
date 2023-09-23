@@ -26,8 +26,6 @@ export const playersSlice = createSlice({
         }
     },
     updatePlayersList: (state, action) => {
-      // clean state
-      /* state.splice(0,state.length) */
       state.push(action.payload)
     },
   },

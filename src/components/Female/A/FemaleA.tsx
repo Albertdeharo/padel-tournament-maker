@@ -14,8 +14,6 @@ function FemaleA() {
 
   return (
     <>
-      <Navbar/>
-      <Sidebar/>
       <div className="male-a__container">
         <h1>Jugadores Femenino A</h1>
       </div>

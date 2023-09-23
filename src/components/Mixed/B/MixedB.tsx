@@ -14,8 +14,6 @@ function MixedB() {
 
   return (
     <>
-      <Navbar/>
-      <Sidebar/>
       <div className="male-b__container">
         <h1>Jugadores Mixto B</h1>
       </div>

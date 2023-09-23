@@ -75,8 +75,6 @@ function PlayersList() {
 
   return (
     <>
-    <Navbar/>
-    <Sidebar/>
     <div className="players_list-container">
         <div className="file-input">
           <input

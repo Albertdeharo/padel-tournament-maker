@@ -13,10 +13,10 @@
     left: 0;
     width: 100%;
     padding-left: 15px;
+    display: flex;
+    flex-direction: column;
     & .sidebar-item__title{
-/*       display: flex;
-      justify-content: center; */
-      color: orange;
+      color: goldenrod;
       margin-top: 10px;
     }
     &:first-child li{
@@ -84,19 +84,16 @@
   & a {
     position: relative;
     display: flex;
-    justify-content: center;
     width: 100%;
-    display: flex;
     text-decoration: none;
-    color: orange;
+    color: goldenrod;
+    margin-left: 10px;
     & .icon{
       position: relative;
       display: flex;
       align-items: center;
-      /* min-width: 60px; */
       height: 35px;
       line-height: 70px;
-      /* padding-left: 20px; */
       & svg {
         font-size: 1.5em;
       }
@@ -107,7 +104,6 @@
       align-items: center;
       padding-left: 10px;
       height: 60px;
-      /* line-height: 25px; */
       white-space: normal;
     }
   }

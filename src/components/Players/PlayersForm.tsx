@@ -52,8 +52,6 @@ function PlayersForm() {
 
   return (
     <>
-      <Navbar/>
-      <Sidebar/>
       <div className="players-form__container">
         <form onSubmit={handleSubmit}>
           <div className="row m-0 p-0">

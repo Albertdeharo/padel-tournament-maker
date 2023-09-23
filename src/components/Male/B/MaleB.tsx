@@ -13,13 +13,9 @@ function MaleB() {
       }, [Players]);
 
   return (
-    <>
-      <Navbar/>
-      <Sidebar/>
       <div className="male-b__container">
         <h1>Jugadores Masculino B</h1>
       </div>
-    </>
   )
 }
 

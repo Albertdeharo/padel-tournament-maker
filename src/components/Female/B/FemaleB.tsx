@@ -14,8 +14,6 @@ function FemaleB() {
 
   return (
     <>
-      <Navbar/>
-      <Sidebar/>
       <div className="male-b__container">
         <h1>Jugadores Femenino B</h1>
       </div>

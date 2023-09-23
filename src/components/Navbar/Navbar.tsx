@@ -27,6 +27,9 @@ function Navbar() {
         </div>
         <div className="nav-links">
             {/* <Link to="/home">Inicio</Link> */}
+            <Link to='/añadir-pistas'>
+                Añadir Pistas
+            </Link>
             <Link to='/añadir-jugador'>
                 Añadir Pareja
             </Link>

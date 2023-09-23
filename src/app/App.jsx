@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.scss'
+import Layout from './../components/Layout/Layout';
+import CourtForm from '../components/Court/CourtForm'
 import PlayersForm from '../components/Players/PlayersForm'
 import PlayersList from '../components/Players/PlayersList'
 import PlayersMaleA from '../components/Male/A/MaleA'
@@ -22,19 +24,118 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<PreHome/>}/>
-          <Route path='/home' element={<Home/>}/>
-          <Route path='/jugadores' element={<PlayersList/>}/>
-          <Route path='/añadir-jugador' element={<PlayersForm/>}/>
-          <Route path='/editar-jugador/:id' element={<PlayersForm/>}/>
-          <Route path='/jugadores/masculino/A' element={<PlayersMaleA/>}/>
-          <Route path='/jugadores/masculino/B' element={<PlayersMaleB/>}/>
-          <Route path='/jugadores/masculino/C' element={<PlayersMaleC/>}/>
-          <Route path='/jugadores/femenino/A' element={<PlayersFemaleA/>}/>
-          <Route path='/jugadores/femenino/B' element={<PlayersFemaleB/>}/>
-          <Route path='/jugadores/femenino/C' element={<PlayersFemaleC/>}/>
-          <Route path='/jugadores/mixto/A' element={<PlayersMixedA/>}/>
-          <Route path='/jugadores/mixto/B' element={<PlayersMixedB/>}/>
-          <Route path='/jugadores/mixto/C' element={<PlayersMixedC/>}/>
+          <Route
+            path='/home'
+            element={
+              <Layout>
+                <Home />
+              </Layout>
+            }
+          />
+          <Route
+            path='/añadir-pistas'
+            element={
+              <Layout>
+                <CourtForm />
+              </Layout>
+            }
+          />
+          <Route
+            path='/jugadores'
+            element={
+              <Layout>
+                <PlayersList />
+              </Layout>
+            }
+          />
+          <Route
+            path='/añadir-jugador'
+            element={
+              <Layout>
+                <PlayersForm />
+              </Layout>
+            }
+          />
+          <Route
+            path='/editar-jugador/:id'
+            element={
+              <Layout>
+                <PlayersForm />
+              </Layout>
+            }
+          />
+          <Route
+            path='/jugadores/masculino/A'
+            element={
+              <Layout>
+                <PlayersMaleA />
+              </Layout>
+            }
+          />
+          <Route
+            path='/jugadores/masculino/B'
+            element={
+              <Layout>
+                <PlayersMaleB />
+              </Layout>
+            }
+          />
+          <Route
+            path='/jugadores/masculino/C'
+            element={
+              <Layout>
+                <PlayersMaleC />
+              </Layout>
+            }
+          />
+          <Route
+            path='/jugadores/femenino/A'
+            element={
+              <Layout>
+                <PlayersFemaleA />
+              </Layout>
+            }
+          />
+          <Route
+            path='/jugadores/femenino/B'
+            element={
+              <Layout>
+                <PlayersFemaleB />
+              </Layout>
+            }
+          />
+          <Route
+            path='/jugadores/femenino/C'
+            element={
+              <Layout>
+                <PlayersFemaleC />
+              </Layout>
+            }
+          />
+          <Route
+            path='/jugadores/mixto/A'
+            element={
+              <Layout>
+                <PlayersMixedA />
+              </Layout>
+            }
+          />
+          <Route
+            path='/jugadores/mixto/B'
+            element={
+              <Layout>
+                <PlayersMixedB />
+              </Layout>
+            }
+          />
+          <Route
+            path='/jugadores/mixto/C'
+            element={
+              <Layout>
+                <PlayersMixedC />
+              </Layout>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>

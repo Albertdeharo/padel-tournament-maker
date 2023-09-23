@@ -14,7 +14,8 @@ function MaleA() {
   const Players = useSelector(state => state.players)
   const [PlayersCategoryA, setPlayersCategoryA] = useState([]);
   const [PlayersGroupsCategoryA, setPlayersGroupsCategoryA] = useState([]);
-
+  console.log(PlayersCategoryA ,'PlayersGroupsCategoryA')
+  console.log(Players ,'Players')
   useEffect(() => {
     const FilterPlayersCategoryA = Players.filter(player => {
       return player.playerCategory === 'A' && player.playerGender === 'Male'
@@ -97,8 +98,6 @@ function MaleA() {
 
   return (
     <>
-      <Navbar/>
-      <Sidebar/>
       <div className="male-a__container">
         <h1>Jugadores Masculino A</h1>
         <h2> total jugadores {PlayersCategoryA.length}</h2>

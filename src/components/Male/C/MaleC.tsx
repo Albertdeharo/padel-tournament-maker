@@ -14,8 +14,6 @@ function MaleC() {
 
   return (
     <>
-      <Navbar/>
-      <Sidebar/>
       <div className="male-c__container">
         <h1>Jugadores Masculino C</h1>
       </div>

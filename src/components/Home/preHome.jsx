@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom'
 export default function PreHome() {
   return (
     <div className="sparkle__home-container">
-      <div className="sparkle-button">
+      <div className="d-flex justify-content-center flex-column text-center">
+        <h1 className="title">Bienvenido a la Plataforma de Torneos de Pádel</h1>
+        <p className="subtitle">Organiza y gestiona torneos de pádel de manera sencilla.</p>
+      </div>
+      <div className="sparkle-button mt-5">
         <Link to={`/home`}>
           <button>
             <span className="spark"></span>
@@ -20,7 +24,7 @@ export default function PreHome() {
                 <path d="M177.2,201c1.3-0.3,2.6-0.7,3.8-1.3c0.6-0.3,1-0.8,1.6-1c0.5-0.3,1.1-0.6,1.8-1l0,0h0.1l0,0c0,0.8-0.4,1.5-1,2.1   s-1.3,0.8-2,1c-1.4,0.4-2.8,0.5-4.2,0.4C177.2,201.2,177.1,201.1,177.2,201C177.1,201.1,177.2,201,177.2,201L177.2,201z"/>
               </g>
             </svg>
-            <span className="text">Make tournament</span>
+            <span className="text">Crear torneo</span>
           </button>
         </Link>
       </div>

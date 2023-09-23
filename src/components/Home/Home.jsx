@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Layout from './../Layout/Layout';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,8 +12,6 @@ import {
 } from 'chart.js';
 import { Doughnut, Bar } from 'react-chartjs-2';
 import { useSelector } from 'react-redux'
-import Navbar from '../Navbar/Navbar'
-import Sidebar from '../Sidebar/Sidebar'
 import "./Home.scss";
 
 ChartJS.register(
@@ -119,9 +118,6 @@ export default function Home() {
   }, [Players]);
 
   return (
-    <>
-      <Navbar/>
-      <Sidebar/>
       <div className="home-container">
         {Players.length != 0 ?
           <>
@@ -150,6 +146,5 @@ export default function Home() {
          <h2>No hay jugadores</h2>
         }
       </div>
-    </>
   );
 }

@@ -15,22 +15,31 @@ import './Sidebar.scss'
 
 function Sidebar() {
     const Players = useSelector(state => state.players)
+    const [expandedItem, setExpandedItem] = useState(null);
 
     const sideBarItemsMale = [
         { id: 'MasculinoA', text: ""},
         { id: 'MasculinoB', text: ""},
         { id: 'MasculinoC', text: ""},
-      ];
+        ];
     const sideBarItemsFemale = [
         { id: 'FemeninoA', text: ""},
         { id: 'FemeninoB', text: ""},
         { id: 'FemeninoC', text: ""},
-      ];
+        ];
     const sideBarItemsMixed = [
         { id: 'MixtoA', text: ""},
         { id: 'MixtoB', text: ""},
         { id: 'MixtoC', text: ""},
-      ];
+        ];
+
+    const toggleMenu = (menuType) => {
+        if (expandedItem === menuType) {
+            setExpandedItem(null);
+        } else {
+            setExpandedItem(menuType);
+        }
+    };
 
     const getItemIcon = (id) => {
     switch(id) {
@@ -132,56 +141,66 @@ function Sidebar() {
             document.getElementById("MixtoC")?.classList.remove('active')
         }
         
-          }, [path]);
+          }, [path, expandedItem]);
 
   return (
     <>
     <div className="custom-sidebar">
         <nav id='sidebar-nav'>
-            {/* <li key={val.id} onClick={() => setActiveItem(val.id)} className={`list ${activeItem === val.id ? "active" : ""}`}> */}
-            
-            <span className='sidebar-item__title'>Men</span>
-            {sideBarItemsMale.map((val) => (
-            <li key={val.id} id={val.id}>
-                <b></b>
-                <b></b>
-                <Link to={'/' + getItemLink(val.id)}>
+            <span
+                className={`sidebar-item__title ${expandedItem === 'Men' ? 'expanded' : ''}`}
+                onClick={() => toggleMenu('Men')}
+            >
+                Men
+            </span>
+            {expandedItem === 'Men' && (
+                sideBarItemsMale.map((val) => (
+                <li key={val.id} id={val.id}>
+                    <b></b>
+                    <b></b>
+                    <Link to={'/' + getItemLink(val.id)}>
                     <span className="icon"><BiMale /></span>
                     <span className="icon">{getItemIcon(val.id)}</span>
-                    {/* <span className="title">{val.text}</span> */}
-                </Link>
-            </li>
-            ))}
-
-
-            <span className='sidebar-item__title'>Women</span>
-            {sideBarItemsFemale.map((val) => (
-            <li key={val.id} id={val.id}>
-                <b></b>
-                <b></b>
-                <Link to={'/' + getItemLink(val.id)}>
+                    </Link>
+                </li>
+                ))
+            )}
+            <span
+                className={`sidebar-item__title ${expandedItem === 'Women' ? 'expanded' : ''}`}
+                onClick={() => toggleMenu('Women')}
+            >
+                Women
+            </span>
+            {expandedItem === 'Women' && (
+                sideBarItemsFemale.map((val) => (
+                <li key={val.id} id={val.id}>
+                    <b></b>
+                    <b></b>
+                    <Link to={'/' + getItemLink(val.id)}>
                     <span className="icon"><BiFemale /></span>
                     <span className="icon">{getItemIcon(val.id)}</span>
-                    {/* <span className="title">{val.text}</span> */}
-                </Link>
-            </li>
-            ))}
-
-
-            <span className='sidebar-item__title'>Mixed</span>
-            {sideBarItemsMixed.map((val) => (
-            <li key={val.id} id={val.id}>
-                <b></b>
-                <b></b>
-                <Link to={'/' + getItemLink(val.id)}>
+                    </Link>
+                </li>
+                ))
+            )}
+            <span
+                className={`sidebar-item__title ${expandedItem === 'Mixed' ? 'expanded' : ''}`}
+                onClick={() => toggleMenu('Mixed')}
+            >
+                Mixed
+            </span>
+            {expandedItem === 'Mixed' && (
+            sideBarItemsMixed.map((val) => (
+                <li key={val.id} id={val.id}>
+                    <b></b>
+                    <b></b>
+                    <Link to={'/' + getItemLink(val.id)}>
                     <span className="icon"><BiMaleFemale /></span>
                     <span className="icon">{getItemIcon(val.id)}</span>
-                    {/* <span className="title">{val.text}</span> */}
-                </Link>
-            </li>
-            ))}
-
-
+                    </Link>
+                </li>
+                ))
+            )}
         </nav>
     </div>
     </>
