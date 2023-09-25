@@ -16,6 +16,8 @@ import PlayersMixedC from '../components/Mixed/C/MixedC'
 import PreHome from '../components/Home/preHome'
 import Home from '../components/Home/Home'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 function App() {
 

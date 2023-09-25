@@ -12,9 +12,39 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding-left: 15px;
     display: flex;
     flex-direction: column;
+    padding-left: 15px;
+    & .accordion {
+      & .accordion-item{
+        border-radius: 0;
+        background-color: #000;
+        border: none;
+
+        &:first-of-type .accordion-button{
+          border-radius: 0;
+        }
+        &:last-of-type .accordion-button{
+          border-radius: 0;
+        }
+        & .accordion-button {
+          background-color: #000;
+          color: goldenrod;
+          font-weight: bold;
+          box-shadow: none;
+          &:focus{
+          box-shadow: none;
+          }
+          &::after{
+            background-image: none;
+          }
+        }
+        & .accordion-body{
+          padding: 0;
+          background-color: #000;
+        }
+      }
+    }
     & .sidebar-item__title{
       color: goldenrod;
       margin-top: 10px;
@@ -85,10 +115,10 @@
   & a {
     position: relative;
     display: flex;
+    justify-content: center;
     width: 100%;
     text-decoration: none;
     color: goldenrod;
-    margin-left: 10px;
     & .icon{
       position: relative;
       display: flex;

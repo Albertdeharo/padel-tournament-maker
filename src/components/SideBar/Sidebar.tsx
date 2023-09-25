@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux'
-import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom'
-import store from './../../app/store'
 import { BiFemale } from 'react-icons/bi';
 import { BiMale } from 'react-icons/bi';
 import { BiMaleFemale } from 'react-icons/bi';
@@ -18,28 +16,22 @@ function Sidebar() {
     const [expandedItem, setExpandedItem] = useState(null);
 
     const sideBarItemsMale = [
-        { id: 'MasculinoA', text: ""},
-        { id: 'MasculinoB', text: ""},
-        { id: 'MasculinoC', text: ""},
+        { id: 'MasculinoA'},
+        { id: 'MasculinoB'},
+        { id: 'MasculinoC'},
         ];
     const sideBarItemsFemale = [
-        { id: 'FemeninoA', text: ""},
-        { id: 'FemeninoB', text: ""},
-        { id: 'FemeninoC', text: ""},
+        { id: 'FemeninoA'},
+        { id: 'FemeninoB'},
+        { id: 'FemeninoC'},
         ];
     const sideBarItemsMixed = [
-        { id: 'MixtoA', text: ""},
-        { id: 'MixtoB', text: ""},
-        { id: 'MixtoC', text: ""},
+        { id: 'MixtoA'},
+        { id: 'MixtoB'},
+        { id: 'MixtoC'},
         ];
 
-    const toggleMenu = (menuType) => {
-        if (expandedItem === menuType) {
-            setExpandedItem(null);
-        } else {
-            setExpandedItem(menuType);
-        }
-    };
+ 
 
     const getItemIcon = (id) => {
     switch(id) {
@@ -147,60 +139,92 @@ function Sidebar() {
     <>
     <div className="custom-sidebar">
         <nav id='sidebar-nav'>
-            <span
-                className={`sidebar-item__title ${expandedItem === 'Men' ? 'expanded' : ''}`}
-                onClick={() => toggleMenu('Men')}
-            >
-                Men
-            </span>
-            {expandedItem === 'Men' && (
-                sideBarItemsMale.map((val) => (
-                <li key={val.id} id={val.id}>
-                    <b></b>
-                    <b></b>
-                    <Link to={'/' + getItemLink(val.id)}>
-                    <span className="icon"><BiMale /></span>
-                    <span className="icon">{getItemIcon(val.id)}</span>
-                    </Link>
-                </li>
-                ))
-            )}
-            <span
-                className={`sidebar-item__title ${expandedItem === 'Women' ? 'expanded' : ''}`}
-                onClick={() => toggleMenu('Women')}
-            >
-                Women
-            </span>
-            {expandedItem === 'Women' && (
-                sideBarItemsFemale.map((val) => (
-                <li key={val.id} id={val.id}>
-                    <b></b>
-                    <b></b>
-                    <Link to={'/' + getItemLink(val.id)}>
-                    <span className="icon"><BiFemale /></span>
-                    <span className="icon">{getItemIcon(val.id)}</span>
-                    </Link>
-                </li>
-                ))
-            )}
-            <span
-                className={`sidebar-item__title ${expandedItem === 'Mixed' ? 'expanded' : ''}`}
-                onClick={() => toggleMenu('Mixed')}
-            >
-                Mixed
-            </span>
-            {expandedItem === 'Mixed' && (
-            sideBarItemsMixed.map((val) => (
-                <li key={val.id} id={val.id}>
-                    <b></b>
-                    <b></b>
-                    <Link to={'/' + getItemLink(val.id)}>
-                    <span className="icon"><BiMaleFemale /></span>
-                    <span className="icon">{getItemIcon(val.id)}</span>
-                    </Link>
-                </li>
-                ))
-            )}
+            <div className="accordion" id="accordionSidebar">
+                <div className="accordion-item">
+                    <h2 className="accordion-header">
+                    <button
+                    className="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseMen"
+                    aria-expanded="false"
+                    aria-controls="collapseMen"
+                    >
+                        Men
+                    </button>
+                    </h2>
+                    <div id="collapseMen" className="accordion-collapse collapse" data-bs-parent="#accordionSidebar">
+                        <div className="accordion-body">
+                            {sideBarItemsMale.map((val) => (
+                                <li key={val.id} id={val.id}>
+                                    <b></b>
+                                    <b></b>
+                                    <Link to={'/' + getItemLink(val.id)}>
+                                    <span className="icon"><BiMale /></span>
+                                    <span className="icon">{getItemIcon(val.id)}</span>
+                                    </Link>
+                                </li>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+                <div className="accordion-item">
+                    <h2 className="accordion-header">
+                    <button
+                    className="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseWomen"
+                    aria-expanded="false"
+                    aria-controls="collapseWomen"
+                    >
+                        Women
+                    </button>
+                    </h2>
+                    <div id="collapseWomen" className="accordion-collapse collapse" data-bs-parent="#accordionSidebar">
+                        <div className="accordion-body">
+                            {sideBarItemsFemale.map((val) => (
+                                <li key={val.id} id={val.id}>
+                                    <b></b>
+                                    <b></b>
+                                    <Link to={'/' + getItemLink(val.id)}>
+                                        <span className="icon"><BiFemale /></span>
+                                        <span className="icon">{getItemIcon(val.id)}</span>
+                                    </Link>
+                                </li>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+                <div className="accordion-item">
+                    <h2 className="accordion-header">
+                    <button
+                    className="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseMixed"
+                    aria-expanded="false"
+                    aria-controls="collapseMixed"
+                    >
+                        Mixed
+                    </button>
+                    </h2>
+                    <div id="collapseMixed" className="accordion-collapse collapse" data-bs-parent="#accordionSidebar">
+                        <div className="accordion-body">
+                            {sideBarItemsMixed.map((val) => (
+                                <li key={val.id} id={val.id}>
+                                    <b></b>
+                                    <b></b>
+                                    <Link to={'/' + getItemLink(val.id)}>
+                                        <span className="icon"><BiMaleFemale /></span>
+                                        <span className="icon">{getItemIcon(val.id)}</span>
+                                    </Link>
+                                </li>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </nav>
     </div>
     </>

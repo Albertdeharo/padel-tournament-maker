@@ -5,8 +5,6 @@ import { addPlayer, editPlayer } from './playersSlice';
 import { v4 as uuid } from 'uuid';
 import { useNavigate, useParams } from 'react-router-dom'
 import * as constants from './../../utils/constants';
-import Navbar from '../Navbar/Navbar'
-import Sidebar from '../Sidebar/Sidebar'
 import './PlayersForm.scss'
 
 function PlayersForm() {
