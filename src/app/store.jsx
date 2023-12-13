@@ -3,11 +3,13 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux'
 import playersReducer from '../components/Players/playersSlice'
+import tournamentReducer from '../components/NewTournamentForm/tournamentSlice'
 
 // import rootReducer from './reducers'; // Importa el root reducer de tu aplicación
 export const rootReducer = combineReducers(
     {
-      players: playersReducer
+      players: playersReducer,
+      tournament: tournamentReducer,
     }
   );
 

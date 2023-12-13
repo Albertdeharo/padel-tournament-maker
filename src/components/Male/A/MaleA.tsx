@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { deletePlayer } from '../../Players/playersSlice';
 import { Link } from 'react-router-dom'
-import Navbar from '../../Navbar/Navbar'
-import Sidebar from '../../Sidebar/Sidebar'
 import { TournamentHours } from '../../../utils/constants';
 import './MaleA.scss'
 import './../../Players/PlayersGroupTables.scss'

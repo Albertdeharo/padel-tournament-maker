@@ -6,6 +6,8 @@ import './Navbar.scss'
 
 function Navbar() {
     const Players = useSelector(state => state.players)
+    const Tournament = useSelector(state => state.tournament)
+    console.log(Tournament,' jajsaj')
 
   return (
     <>
@@ -13,7 +15,7 @@ function Navbar() {
         <input type="checkbox" id="nav-check" />
         <div className="nav-header">
             <div className="nav-title">
-                <Link to="/home">Padel Tournament maker</Link>
+                <Link to="/home">{Tournament.tournamentName}</Link>
             </div>
         </div>
         <div className="nav-btn">

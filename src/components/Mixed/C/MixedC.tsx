@@ -1,8 +1,6 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import Navbar from '../../Navbar/Navbar'
-import Sidebar from '../../Sidebar/Sidebar'
 import './MixedC.scss'
 
 function MixedC() {

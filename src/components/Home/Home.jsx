@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Layout from './../Layout/Layout';
 import {
   Chart as ChartJS,
   CategoryScale,
